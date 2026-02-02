@@ -11,3 +11,87 @@
   --font-montserrat: "Montserrat", sans-serif;
   --font-inter: "Inter", sans-serif;
 }
+
+.text-orange{
+  color: var(--orange) !important;
+}
+
+.text-orangeAccent{
+  color: var(--orange-accent) !important;
+}
+
+.bg-orange{
+  background-color: var(--orange) !important;
+}
+.bg-orangeAccent{
+  background-color: var(--orange-accent) !important;
+}
+
+.font-bungee {
+  font-family: var(--font-bungee) !important;
+}
+
+.font-inter {
+  font-family: var(--font-inter) !important;
+}
+
+.font-mont {
+  font-family: var(--font-montserrat) !important;
+}
+
+.font-cursive {
+  font-family: cursive !important;
+}
+
+.primary-btn {
+  padding: 8px 18px;
+  background-color: var(--purple);
+  color: var(--text-white);
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  transform: scale(1.07) rotateZ(-1.8deg);
+  color: var(--purple);
+  background-color: var(--text-white);
+}
+
+.secondary-btn {
+  border: 2px solid var(--text-white);
+  background-color: transparent;
+  padding: 8px 18px;
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  transform: scale(1.07) rotateZ(-1.8deg);
+  color: black;
+  background-color: var(--text-white);
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px) scale(.8);
+
+  }
+
+  50% {
+    transform: translateY(0px) scale(.72);
+  }
+
+  75% {
+    transform: translateY(-130px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

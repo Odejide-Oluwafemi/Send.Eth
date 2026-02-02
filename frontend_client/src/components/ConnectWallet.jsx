@@ -1,6 +1,6 @@
-const ConnectWallet = () => {
+const ConnectWallet = ({connectWallet}) => {
   return(
-    <button>
+    <button className="primary-btn" onClick={connectWallet}>
       Connect Wallet
     </button>
   );

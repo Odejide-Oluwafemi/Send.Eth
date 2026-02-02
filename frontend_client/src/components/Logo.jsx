@@ -1,10 +1,12 @@
 const Logo = () => {
   return (
-    <div id="logo">
-      <span id="logo-send">Send</span>
-      <span id="logo-dot"></span>
-      <span id="logo-eth">ETH</span>
-    </div>
+    <a href="#">
+      <div id="logo">
+        <span id="logo-send">Send</span>
+        <span id="logo-dot" className="bg-orangeAccent"></span>
+        <span id="logo-eth">ETH</span>
+      </div>
+    </a>
   );
 };
 

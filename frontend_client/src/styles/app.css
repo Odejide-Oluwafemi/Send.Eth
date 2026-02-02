@@ -1,4 +1,7 @@
 body {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
   font-family: var(--font-montserrat);
   margin: 0;
   padding: 0;
@@ -13,11 +16,14 @@ body {
 }
 
 header {
+  position: sticky;
+
   background-color: var(--bg-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   padding: 10px 3%;
   height: 5vh;
 }
@@ -27,9 +33,23 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-#logo > span {
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+#logo:hover {
+  transform: scale(1.1);
+}
+
+#logo span {
   text-align: center;
 }
 
@@ -39,7 +59,7 @@ span#logo-send {
 }
 
 span#logo-dot {
-  background-color: var(--orange);
+  /* background-color: var(--orange); */
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -56,23 +76,32 @@ span#logo-eth {
 }
 
 nav {
-  width: 100%;
+  flex-grow: 1;
   padding: 0;
 }
 
-nav > ul {
+nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
 
-nav > ul > li {
-  list-style-type: none;
+.nav-link {
   width: 15%;
+  text-decoration: none;
+  color: var(--text-white);
+}
+
+.nav-link:visited {
+  color: var(--text-white);
+}
+
+nav > ul li {
+  list-style-type: none;
+  
   text-align: center;
   cursor: pointer;
-  /* border-bottom: 0px solid transparent; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,19 +109,57 @@ nav > ul > li {
   gap: 2px;
 }
 
-nav > ul > li:hover {
+nav > ul li:hover {
   font-weight: bold;
-  /* border-bottom: 1px solid var(--orange-accent); */
 }
 
-nav > ul > li > div {
+nav > ul li > div {
   text-align: center;
   width: 0%;
   height: 0px;
-  background-color: var(--orange-accent);
+  /* background-color: var(--orange-accent); */
 }
 
-nav > ul > li:hover > div {
+nav > ul li:hover > div {
   width: 50%;
   height: 2px;
+}
+
+main {}
+
+main > section {
+  padding: 4% 10%;
+}
+
+#hero-section {
+  height: 95vh;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-left-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.hero-left-container > button {
+  width: max-content;
+  padding: 12px 20px;
+  font-size: 1rem;
+}
+
+.hero-right-container {}
+
+.hero-right-container > img {
+  width: 300px;
+  animation-name: "bounce";
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-delay: 0;
+  animation-direction: alternate-reverse;
 }
