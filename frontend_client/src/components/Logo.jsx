@@ -1,7 +1,9 @@
 const Logo = () => {
   return (
-    <div>
-      <h1>Send.ETH</h1>
+    <div id="logo">
+      <span id="logo-send">Send</span>
+      <span id="logo-dot"></span>
+      <span id="logo-eth">ETH</span>
     </div>
   );
 };

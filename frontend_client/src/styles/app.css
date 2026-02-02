@@ -1,4 +1,98 @@
 body {
+  font-family: var(--font-montserrat);
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  background-color: var(--dark-bg-color);
+  color: var(--text-white);
+}
+
+* {
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+header {
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 3%;
+  height: 5vh;
+}
+
+#logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo > span {
+  text-align: center;
+}
+
+span#logo-send {
+  font-size: 1.58rem;
+  font-family: var(--font-bungee);
+}
+
+span#logo-dot {
+  background-color: var(--orange);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  align-self: self-end;
+  position: relative;
+  top: -10px;
+  right: 3px;
+}
+
+span#logo-eth {
+  transform: rotateZ(-5deg);
+  font-size: 0.9rem;
+  font-family: cursive;
+}
+
+nav {
+  width: 100%;
+  padding: 0;
+}
+
+nav > ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+nav > ul > li {
+  list-style-type: none;
+  width: 15%;
+  text-align: center;
+  cursor: pointer;
+  /* border-bottom: 0px solid transparent; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+nav > ul > li:hover {
+  font-weight: bold;
+  /* border-bottom: 1px solid var(--orange-accent); */
+}
+
+nav > ul > li > div {
+  text-align: center;
+  width: 0%;
+  height: 0px;
+  background-color: var(--orange-accent);
+}
+
+nav > ul > li:hover > div {
+  width: 50%;
+  height: 2px;
 }

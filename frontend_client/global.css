@@ -1,0 +1,13 @@
+
+:root {
+  --dark-bg-color: #0b0014;
+  --bg-color: #1b0032;
+  --purple: #500073;
+  --orange: #C62300;
+  --orange-accent: #F14A00;
+
+  --text-white: rgb(230, 230, 230);
+  --font-bungee: "Bungee", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}

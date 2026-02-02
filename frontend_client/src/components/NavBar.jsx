@@ -2,8 +2,8 @@ export function NavBar() {
   return (
     <nav>
       <ul>
-        <li>About Us</li>
-        <li>Contact us</li>
+        <li>About Us<div></div></li>
+        <li>Contact<div></div></li>
       </ul>
     </nav>
   );
