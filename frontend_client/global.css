@@ -10,6 +10,8 @@
   --font-bungee: "Bungee", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
   --font-inter: "Inter", sans-serif;
+
+  --shadow-purple: 0 4px 4px 4px var(--purple);
 }
 
 .text-orange{
@@ -93,5 +95,17 @@
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes traverse {
+  from {
+    transform: translateX(-150px) rotateZ(-90deg);
+    /* transform: rotateZ(-90deg); */
+  }
+
+  to {
+    transform: translateX(150px) rotateZ(-90deg);
+    /* transform: rotateZ(-90deg); */
   }
 }

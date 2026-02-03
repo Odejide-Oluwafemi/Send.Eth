@@ -5,7 +5,7 @@ contract SendEth {
     error SendEth__SentZeroAmount();
     error SendEth__TransferFailed();
     error SendEth__InvalidTransactionId();
-    error SendEth__TransactionPending();
+    error SendEth__NotAValidTransaction();
 
     enum TransactionStatus {
         Created,
@@ -26,20 +26,15 @@ contract SendEth {
 
     Transaction[] public allTransactions;
     mapping (address user => Transaction[]) private  userTransactions;
-    mapping (address user => mapping (uint256 id => Transaction)) private  userTransactionById;
 
     function createTransaction(address _receipient, string memory _message) public payable  {
         if (msg.value == 0) revert SendEth__SentZeroAmount();
+
         uint256 txId = allTransactions.length + 1;
 
         Transaction memory transaction = Transaction(
             txId, msg.sender, _receipient, msg.value, _message, block.timestamp, TransactionStatus.Created
         );
-
-        // State Changes
-        allTransactions.push(transaction);
-        userTransactions[msg.sender].push(transaction);
-        userTransactionById[msg.sender][txId] = transaction;
 
         // Process Transaction
         sendTransaction(transaction);
@@ -51,26 +46,32 @@ contract SendEth {
     }
 
     modifier preventReentrancy(TransactionStatus status) {
-        if (status != TransactionStatus.Created) revert SendEth__TransactionPending();
+        if (status != TransactionStatus.Created) revert SendEth__NotAValidTransaction();
         _;
     }
 
-    function sendTransaction(Transaction memory transaction) internal isValidId(transaction.id) preventReentrancy(transaction.status) {
-        userTransactionById[transaction.sender][transaction.id].status = TransactionStatus.Pending;
+    function sendTransaction(Transaction memory transaction) internal preventReentrancy(transaction.status) {
+        transaction.status = TransactionStatus.Pending;
 
         (bool success, ) = transaction.receipient.call{value: transaction.amount}("");
 
         if (!success) {
-            userTransactionById[transaction.sender][transaction.id].status = TransactionStatus.Failed;
+            transaction.status = TransactionStatus.Failed;
             revert SendEth__TransferFailed();
         }
+        else {
+            transaction.status = TransactionStatus.Success;
+        }
+
+        allTransactions.push(transaction);
+        userTransactions[msg.sender].push(transaction);
     }
 
     function getAllUserTransactions(address user) external view returns (Transaction[] memory) {
         return userTransactions[user];
     }
 
-    function getSpecificUserTransaction(address user, uint256 txId) external isValidId(txId) view returns (Transaction memory) {
-        return userTransactionById[user][txId];
+    function getTransactionById(uint256 txId) external isValidId(txId) view returns (Transaction memory) {
+        return allTransactions[txId - 1];
     }
 }
