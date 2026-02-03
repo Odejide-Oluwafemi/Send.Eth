@@ -22,11 +22,6 @@ const InputForm = ({sendTransaction}) => {
             <textarea type="text" name="message" maxLength={100} placeholder="Here's a little something pal :)"/>
           </span>
 
-           <span className="form-group">
-            <label htmlFor="keyword">GIF Keyword (max. 30 characters):</label>
-            <input type="text" name="keyword" placeholder="money flying away" maxLength={30}/>
-          </span>
-
           <button id="submit-transaction-btn" type="submit">Send <span className="text-orange">Instant</span> Transaction</button>
         </form>
       </div>

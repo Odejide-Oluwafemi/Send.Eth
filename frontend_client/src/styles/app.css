@@ -166,7 +166,10 @@ main > section {
 
 .hero-right-container {
   flex-grow: 1;
-  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-right-container > img {
@@ -180,16 +183,17 @@ main > section {
 }
 
 #input-form-container {
-  width: 100%;
+  width: 80%;
   /* height: 200px; */
   border: 1px solid white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 20px 23px;
+  border-radius: 15px;
   box-shadow: var(--shadow-purple);
+  margin-top: 120px;
 }
 
 #input-form-container > img {
@@ -250,7 +254,7 @@ main > section {
 .form-group > input, .form-group > textarea {
   width: 100%;
   flex-grow: 1;
-  padding: 10px;
+  padding: 16px 13px;
   border: 1px solid var(--bg-color);
   border-radius: 10px;
   box-sizing: border-box;
@@ -268,8 +272,8 @@ main > section {
 
 #submit-transaction-btn {
   padding: 14px;
-  color: var(--purple);
-  background-color: var(--text-white);
+  background-color: var(--purple);
+  color: var(--text-white);
   border: none;
   font-weight: bold;
   font-size: 1rem;
@@ -283,6 +287,6 @@ main > section {
 
 #submit-transaction-btn:hover {
   transform: scale(1.04) rotateZ(0);
-  background-color: var(--purple);
-  color: var(--text-white);
+  color: var(--purple);
+  background-color: var(--text-white);
 }

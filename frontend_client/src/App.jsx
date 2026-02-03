@@ -4,27 +4,18 @@ import { useContext, useState } from "react";
 import { BlockchainContext } from "./context/BlockchainContext";
 
 const App = () => {
-  const {connectWallet, disconnectWallet, account} = useContext(BlockchainContext);
+  const {connectWallet, disconnectWallet, account, sendTransaction} = useContext(BlockchainContext);
   const [showInputForm, setShowInputForm] = useState(false);
-  const [transactionData, setTransactionData] = useState({
-    "receipient-address": "",
-    "amount": "",
-    "message": "",
-    "keyword": "" 
-  });
-
-  const sendTransaction = async (event) => {
+  const handleSendTransaction = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
-    setTransactionData({
-      "receipient-address": data.get("receipient-address").toString(),
-      "amount": parseFloat(data.get("amount")),
-      "message": data.get("message").toString(),
-      "keyword": data.get("keyword").toString(),
-    });
-
     event.currentTarget.reset();
+
+    sendTransaction({
+      "receipient-address": data.get("receipient-address").toString(),
+      "amount": data.get("amount").toString(),
+      "message": data.get("message").toString(),
+    });
   }
 
   return (
@@ -50,7 +41,7 @@ const App = () => {
           <div className="hero-right-container">
             {showInputForm == false ?
               <img src="vite.svg" />
-              : <InputForm sendTransaction={sendTransaction}/>
+              : <InputForm sendTransaction={handleSendTransaction}/>
             }   
           </div>
         </section>
