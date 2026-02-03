@@ -1,8 +1,10 @@
 import "./styles/app.css";
 import { NavBar, Logo, ConnectWallet, InputForm } from "./components";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { BlockchainContext } from "./context/BlockchainContext";
 
 const App = () => {
+  const {connectWallet, disconnectWallet, account} = useContext(BlockchainContext);
   const [showInputForm, setShowInputForm] = useState(false);
   const [transactionData, setTransactionData] = useState({
     "receipient-address": "",
@@ -10,10 +12,6 @@ const App = () => {
     "message": "",
     "keyword": "" 
   });
-
-  const tryItOut = () => {
-    setShowInputForm(true);
-  }
 
   const sendTransaction = async (event) => {
     event.preventDefault();
@@ -29,16 +27,12 @@ const App = () => {
     event.currentTarget.reset();
   }
 
-  const connectWallet = () => {
-    console.log("Connect Wallet")
-  }
-
   return (
     <>
       <header>
         <Logo />
         <NavBar />
-        <ConnectWallet connectWallet={() => connectWallet()} />
+        <ConnectWallet connectWallet={connectWallet} disconnectWallet={disconnectWallet} account={account}/>
       </header>
 
       <main>
@@ -50,7 +44,7 @@ const App = () => {
               any wallet{" "}
               <span className="text-orangeAccent font-bungee">instantly</span>
             </h1>
-            {!showInputForm && <button id="try-it-out-btn" className="secondary-btn" onClick={tryItOut}>Try it out now</button>}
+            {!showInputForm && <button id="try-it-out-btn" className="secondary-btn" onClick={() => setShowInputForm(true)}>Try it out now</button>}
           </div>
 
           <div className="hero-right-container">
