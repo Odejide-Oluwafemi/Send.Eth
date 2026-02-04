@@ -132,6 +132,7 @@ main {}
 
 main > section {
   padding: 4% 10%;
+  margin-block-end: 100px;
 }
 
 #hero-section {
@@ -290,6 +291,23 @@ main > section {
   transform: scale(1.04) rotateZ(0);
   color: var(--purple);
   background-color: var(--text-white);
+}
+
+section#web3bridge-section {
+  background: url("web3bridge.png");
+  background-size: 80px;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-position: center;
+  background-size: 200px;
+}
+
+section#web3bridge-section > p {
+  text-align: center;
+  background-color: var(--dark-bg-color);
+  font-size: 20px;
+  padding: 2px;
+  border-radius: 5px;
 }
 
 section#all-transactions-section {

@@ -40,6 +40,11 @@ const App = () => {
         />
       </header>
 
+      <marquee>
+        &copy; 2026, Odejide Oluwafemi (Group 1) @
+        <b className="text-orangeAccent"> Web3Bridge </b>Cohort XIV{" "}
+      </marquee>
+
       <main>
         <section id="hero-section">
           <div className="hero-left-container">
@@ -67,6 +72,10 @@ const App = () => {
               <InputForm sendTransaction={handleSendTransaction} />
             )}
           </div>
+        </section>
+
+        <section id="web3bridge-section">
+            <p>Proudly Web3Bridge</p>
         </section>
 
         <section id="all-transactions-section">
