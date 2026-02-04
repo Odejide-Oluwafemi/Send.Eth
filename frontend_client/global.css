@@ -136,6 +136,16 @@
   }
 }
 
+@keyframes zoomInOut {
+  from {
+    transform: scale(0.9);
+  }
+
+  to {
+    transform: scale(1.15);
+  }
+}
+
 marquee {
   padding: 8px;
 }

@@ -299,15 +299,24 @@ section#web3bridge-section {
   background-repeat: no-repeat;
   background-clip: border-box;
   background-position: center;
-  background-size: 200px;
+  background-size: 150px;
+
+  animation-name: "zoomInOut";
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-direction: alternate-reverse;
 }
 
 section#web3bridge-section > p {
   text-align: center;
   background-color: var(--dark-bg-color);
-  font-size: 20px;
-  padding: 2px;
+  font-size: 16px;
+  /* padding: 2px; */
   border-radius: 5px;
+  letter-spacing: 2px;
+  word-spacing: 3px;
+  user-select: none;
 }
 
 section#all-transactions-section {
