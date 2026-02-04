@@ -303,6 +303,7 @@ section#all-transactions-section {
 section#all-transactions-section > h1{
   border-bottom: 2px solid var(--orange-accent);
   margin-bottom: 20px;
+  margin-bottom: 70px;
 }
 
 .all-transactions-display-container {
@@ -377,4 +378,21 @@ background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%,
 .transaction-pending-svg {
   width: 17px !important;
   fill: orange;
+}
+
+.loading-spinner {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  display: block;
+}
+
+.loading-spinner > svg {
+  width: 45px;
+  fill: white;
+
+  animation-name: "spinner-svg";
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }

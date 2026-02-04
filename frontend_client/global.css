@@ -109,3 +109,29 @@
     /* transform: rotateZ(-90deg); */
   }
 }
+
+@keyframes spinner-svg {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+
+  0% {
+    fill: white;
+    scale: 1;
+
+  }
+
+  90% {
+    fill: var(--orange-accent);
+    scale: 1.2;
+  }
+
+  100% {
+    fill: white;
+    scale: 1;
+  }
+}

@@ -3,10 +3,19 @@ import { NavBar, Logo, ConnectWallet, InputForm } from "./components";
 import { useContext, useState } from "react";
 import { BlockchainContext } from "./context/BlockchainContext";
 import AllTransactions from "./components/AllTransactions";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const App = () => {
-  const {connectWallet, disconnectWallet, account, sendTransaction, allTransactions} = useContext(BlockchainContext);
+  const {
+    connectWallet,
+    disconnectWallet,
+    account,
+    sendTransaction,
+    allTransactions,
+    isLoading,
+  } = useContext(BlockchainContext);
   const [showInputForm, setShowInputForm] = useState(false);
+
   const handleSendTransaction = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -14,17 +23,21 @@ const App = () => {
 
     sendTransaction({
       "receipient-address": data.get("receipient-address").toString(),
-      "amount": data.get("amount").toString(),
-      "message": data.get("message").toString(),
+      amount: data.get("amount").toString(),
+      message: data.get("message").toString(),
     });
-  }
+  };
 
   return (
     <>
       <header>
         <Logo />
         <NavBar />
-        <ConnectWallet connectWallet={connectWallet} disconnectWallet={disconnectWallet} account={account}/>
+        <ConnectWallet
+          connectWallet={connectWallet}
+          disconnectWallet={disconnectWallet}
+          account={account}
+        />
       </header>
 
       <main>
@@ -36,18 +49,34 @@ const App = () => {
               any wallet{" "}
               <span className="text-orangeAccent font-bungee">instantly</span>
             </h1>
-            {!showInputForm && <button id="try-it-out-btn" className="secondary-btn" onClick={() => setShowInputForm(true)}>Try it out now</button>}
+            {!showInputForm && (
+              <button
+                id="try-it-out-btn"
+                className="secondary-btn"
+                onClick={() => setShowInputForm(true)}
+              >
+                Try it out now
+              </button>
+            )}
           </div>
 
           <div className="hero-right-container">
-            {showInputForm == false ?
+            {showInputForm == false ? (
               <img src="vite.svg" />
-              : <InputForm sendTransaction={handleSendTransaction}/>
-            }   
+            ) : (
+              <InputForm sendTransaction={handleSendTransaction} />
+            )}
           </div>
         </section>
 
-        <AllTransactions data={allTransactions}/>
+        <section id="all-transactions-section">
+          <h1>All Transactions</h1>
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <AllTransactions data={allTransactions} />
+          )}
+        </section>
       </main>
     </>
   );

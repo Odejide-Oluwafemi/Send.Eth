@@ -15,15 +15,12 @@ const AllTransactions = ({ data }) => {
   };
 
   return (
-    <section id="all-transactions-section">
-      <h1>All Transactions</h1>
-
+    
       <div className="all-transactions-display-container">
         {Array.from(data).map((d) => (
           <TransactionCard key={destructureData(d).id} data={destructureData(d)}/>
         ))}
       </div>
-    </section>
   );
 };
 

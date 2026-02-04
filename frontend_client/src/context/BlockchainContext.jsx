@@ -9,6 +9,7 @@ export const BlockchainContextProvider = ({ children }) => {
   const [account, setAccount] = useState("");
   const [contract, setContract] = useState(null);
   const [allTransactions, setAllTransactions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getContract = async () => {
     const provider = new ethers.BrowserProvider(ethereum).provider;
@@ -87,26 +88,32 @@ export const BlockchainContextProvider = ({ children }) => {
   const loadAllTransactions = async () => {
     if (!ethereum) return alert("Install Metamask!");
     if (!contract) return;
-    
+
     let isFinished = false;
     const data = [];
 
     try {
       while (!isFinished) {
-        data.push((await contract?.allTransactions(data.length)));
+        data.push(await contract?.allTransactions(data.length));
       }
-    }
-    catch(error) {
-      console.log("No more Data")
+    } catch (error) {
       isFinished = true;
     }
 
     setAllTransactions(data);
-  }
+    setIsLoading(false);
+  };
 
   return (
     <BlockchainContext.Provider
-      value={{ connectWallet, disconnectWallet, account, sendTransaction, allTransactions }}
+      value={{
+        connectWallet,
+        disconnectWallet,
+        account,
+        sendTransaction,
+        allTransactions,
+        isLoading,
+      }}
     >
       {children}
     </BlockchainContext.Provider>
