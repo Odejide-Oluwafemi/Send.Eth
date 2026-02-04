@@ -1,6 +1,16 @@
+import { ethers, WeiPerEther } from "ethers";
+
 const shortenAddress = (address) => {
   return `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 };
+
+const weiToEth = (bigNum) => {
+	return ethers.formatEther(bigNum);
+}
+
+const timestampToLocaleTime = (timestamp) => {
+	return new Date(parseInt((ethers.toNumber(timestamp) * 1000).toString())).toLocaleDateString()
+}
 
 const CONTRACT_ADDRESS = "0xe25aC1ae173e0219c7b0124e7714D5D7B1bb1be8";
 
@@ -206,4 +216,4 @@ const ABI = [
 	}
 ];
 
-export { shortenAddress, CONTRACT_ADDRESS, ABI };
+export { shortenAddress, CONTRACT_ADDRESS, ABI, weiToEth, timestampToLocaleTime};

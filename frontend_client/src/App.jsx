@@ -2,9 +2,10 @@ import "./styles/app.css";
 import { NavBar, Logo, ConnectWallet, InputForm } from "./components";
 import { useContext, useState } from "react";
 import { BlockchainContext } from "./context/BlockchainContext";
+import AllTransactions from "./components/AllTransactions";
 
 const App = () => {
-  const {connectWallet, disconnectWallet, account, sendTransaction} = useContext(BlockchainContext);
+  const {connectWallet, disconnectWallet, account, sendTransaction, allTransactions} = useContext(BlockchainContext);
   const [showInputForm, setShowInputForm] = useState(false);
   const handleSendTransaction = (event) => {
     event.preventDefault();
@@ -45,6 +46,8 @@ const App = () => {
             }   
           </div>
         </section>
+
+        <AllTransactions data={allTransactions}/>
       </main>
     </>
   );

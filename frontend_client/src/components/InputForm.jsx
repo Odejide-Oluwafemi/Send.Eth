@@ -18,8 +18,8 @@ const InputForm = ({sendTransaction}) => {
           </span>
 
           <span className="form-group">
-            <label htmlFor="message">Message (max. 100 characters):</label>
-            <textarea type="text" name="message" maxLength={100} placeholder="Here's a little something pal :)"/>
+            <label htmlFor="message">Message (max. 20 characters):</label>
+            <textarea type="text" name="message" maxLength={20} placeholder="Here's a little something pal :)"/>
           </span>
 
           <button id="submit-transaction-btn" type="submit">Send <span className="text-orange">Instant</span> Transaction</button>

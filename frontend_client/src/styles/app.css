@@ -17,7 +17,8 @@ body {
 
 header {
   position: sticky;
-
+  top: 0;
+  z-index: 100;
   background-color: var(--bg-color);
   display: flex;
   flex-direction: row;
@@ -289,4 +290,91 @@ main > section {
   transform: scale(1.04) rotateZ(0);
   color: var(--purple);
   background-color: var(--text-white);
+}
+
+section#all-transactions-section {
+  border-top: 1px solid rgba(128, 128, 128, 0.206);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+section#all-transactions-section > h1{
+  border-bottom: 2px solid var(--orange-accent);
+  margin-bottom: 20px;
+}
+
+.all-transactions-display-container {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.transaction-card-container {
+  border: 1px solid white;
+  width: 360px;
+  overflow: hidden;
+  height: 250px;
+  border-radius: 10px;
+  background-color: var(--bg-color);
+  background: linear-gradient(to bottom right, var(--orange-accent), var(--purple), var(--dark-bg-color));
+  /* background: #020024;
+background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%); */
+}
+
+.card-top-section {
+  height: 60%;
+}
+
+.card-bottom-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-senders-detail {
+  font-size: 0.88rem;
+  
+  display: flex;
+  justify-content: space-between;
+}
+.card-senders-detail > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-senders-detail > svg {
+  width: 30px;
+  fill: var(--text-white);
+  transform: rotateZ(45deg);
+}
+
+.card-transaction-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-transaction-details svg {
+  width: 20px;
+}
+
+.transaction-success-svg {
+  fill: green;
+}
+
+.transaction-failed-svg {
+  fill: red;
+}
+
+.transaction-pending-svg {
+  width: 17px !important;
+  fill: orange;
 }
