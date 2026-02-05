@@ -127,9 +127,8 @@ export const BlockchainContextProvider = ({ children }) => {
       await tx.wait();
       return true;
     } catch (error) {
+      if (error.message.includes("insufficient funds")) alert("Insufficient Funds");
       return false;
-      console.error(error);
-      alert("Failed to create Transaction!");
     }
   };
 
