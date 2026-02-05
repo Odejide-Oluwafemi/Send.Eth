@@ -1,10 +1,9 @@
-
 :root {
   --dark-bg-color: #0b0014;
   --bg-color: #1b0032;
   --purple: #500073;
-  --orange: #C62300;
-  --orange-accent: #F14A00;
+  --orange: #c62300;
+  --orange-accent: #f14a00;
 
   --text-white: rgb(230, 230, 230);
   --font-bungee: "Bungee", sans-serif;
@@ -14,18 +13,18 @@
   --shadow-purple: 0 4px 4px 4px var(--purple);
 }
 
-.text-orange{
+.text-orange {
   color: var(--orange) !important;
 }
 
-.text-orangeAccent{
+.text-orangeAccent {
   color: var(--orange-accent) !important;
 }
 
-.bg-orange{
+.bg-orange {
   background-color: var(--orange) !important;
 }
-.bg-orangeAccent{
+.bg-orangeAccent {
   background-color: var(--orange-accent) !important;
 }
 
@@ -81,12 +80,11 @@
 
 @keyframes bounce {
   0% {
-    transform: translateY(0px) scale(.8);
-
+    transform: translateY(0px) scale(0.8);
   }
 
   50% {
-    transform: translateY(0px) scale(.72);
+    transform: translateY(0px) scale(0.72);
   }
 
   75% {
@@ -122,7 +120,6 @@
   0% {
     fill: white;
     scale: 1;
-
   }
 
   90% {
@@ -148,4 +145,23 @@
 
 marquee {
   padding: 8px;
+}
+
+#select-network-container {
+  /* border: 1px solid white; */
+  padding: 5px 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  /* flex-direction: column; */
+  gap: 20px;
+  align-self: start;
+  margin-bottom: 20px;
+}
+
+#select-network-container select {
+  border: 1px solid var(--orange);
+  padding: 10px 15px;
+  border-radius: 16px;
+  font-size: 0.9rem;
 }

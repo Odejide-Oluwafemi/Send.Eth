@@ -13,19 +13,72 @@ const App = () => {
     sendTransaction,
     allTransactions,
     isLoading,
+    isValidEtherAmount,
   } = useContext(BlockchainContext);
+
   const [showInputForm, setShowInputForm] = useState(false);
+  const [transactionInProgress, setTransactionInProgress] = useState(false);
+  const [transactionDetail, setTransactionDetail] = useState({
+    "receipient-address": "",
+    amount: "",
+    message: "",
+  });
 
-  const handleSendTransaction = (event) => {
+  const validTransaction = (data) => {
+    if (!data) return false;
+    console.log("Data Pass")
+
+    if (!data["receipient-address"] || !data.message || !data.amount)
+      return false;
+
+    console.log("Data details pass")
+
+    try {
+      isValidEtherAmount(data.amount.toString());
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSendTransaction = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    event.currentTarget.reset();
+    if (transactionInProgress)
+      return alert("A Transaction is still in progress...");
 
-    sendTransaction({
+    const data = new FormData(event.currentTarget);
+    const decodedData = {
       "receipient-address": data.get("receipient-address").toString(),
       amount: data.get("amount").toString(),
       message: data.get("message").toString(),
+    };
+    setTransactionDetail(decodedData);
+    console.log(transactionDetail);
+    if (!validTransaction(transactionDetail))
+      return alert("Fill in the transaction details appropriately");
+
+    setTransactionInProgress(true);
+
+    let success = await sendTransaction(decodedData);
+
+    if (success) alert("Transaction Successful");
+    else alert("Transaction Failed");
+
+    setTransactionInProgress(false);
+    setTransactionDetail({
+      "receipient-address": "",
+      amount: "",
+      message: "",
     });
+  };
+
+  const handleFormShow = async () => {
+    if (!account) {
+      alert("Connecting Wallet...");
+      await connectWallet();
+    } else setShowInputForm(true);
   };
 
   return (
@@ -58,7 +111,7 @@ const App = () => {
               <button
                 id="try-it-out-btn"
                 className="secondary-btn"
-                onClick={() => setShowInputForm(true)}
+                onClick={handleFormShow}
               >
                 Try it out now
               </button>
@@ -69,22 +122,36 @@ const App = () => {
             {showInputForm == false ? (
               <img src="vite.svg" />
             ) : (
-              <InputForm sendTransaction={handleSendTransaction} />
+              <InputForm
+                sendTransaction={handleSendTransaction}
+                setShowInputForm={setShowInputForm}
+                transactionInProgress={transactionInProgress}
+                transactionDetail={transactionDetail}
+                setTransactionDetail={setTransactionDetail}
+              />
             )}
           </div>
         </section>
 
         <section id="web3bridge-section">
-            <p>Proudly Web3Bridge</p>
+          <p>Proudly Web3Bridge</p>
         </section>
 
         <section id="all-transactions-section">
           <h1>All Transactions</h1>
-          {isLoading ? (
+
+          <div>
+            {allTransactions != [] && (
+              <AllTransactions data={allTransactions} />
+            )}
+            {isLoading && <LoadingSpinner />}
+          </div>
+
+          {/* {isLoading ? (
             <LoadingSpinner />
           ) : (
             <AllTransactions data={allTransactions} />
-          )}
+          )} */}
         </section>
       </main>
     </>

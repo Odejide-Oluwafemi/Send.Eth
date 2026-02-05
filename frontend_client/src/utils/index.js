@@ -1,4 +1,4 @@
-import { ethers, WeiPerEther } from "ethers";
+import { ethers } from "ethers";
 
 const shortenAddress = (address) => {
   return `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
@@ -216,4 +216,9 @@ const ABI = [
 	}
 ];
 
-export { shortenAddress, CONTRACT_ADDRESS, ABI, weiToEth, timestampToLocaleTime};
+const NETWORKS = {
+	1n: "Mainnet",
+	11155111n: "Sepolia"
+};
+
+export { shortenAddress, CONTRACT_ADDRESS, ABI, weiToEth, timestampToLocaleTime, NETWORKS};

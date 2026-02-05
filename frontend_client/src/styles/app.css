@@ -136,7 +136,8 @@ main > section {
 }
 
 #hero-section {
-  height: 95vh;
+  min-height: 95vh;
+  margin-bottom: 40px;
   display: flex;
   gap: 20px;
   justify-content: space-between;
@@ -272,6 +273,16 @@ main > section {
   resize: none;
 }
 
+.hide-form-btn {
+  border: none;
+  background: none;
+  color: var(--text-white);
+  text-decoration: underline;
+  padding: 3px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
 #submit-transaction-btn {
   padding: 14px;
   background-color: var(--purple);
@@ -300,7 +311,6 @@ section#web3bridge-section {
   background-clip: border-box;
   background-position: center;
   background-size: 150px;
-
   animation-name: "zoomInOut";
   animation-duration: 5s;
   animation-iteration-count: infinite;
@@ -423,3 +433,4 @@ background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%,
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
