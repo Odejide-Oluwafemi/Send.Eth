@@ -144,7 +144,7 @@ const App = () => {
             {allTransactions != [] && (
               <AllTransactions data={allTransactions} />
             )}
-            {isLoading && <LoadingSpinner />}
+            {isLoading && <LoadingSpinner message="Loading All Transactions..."/>}
           </div>
 
           {/* {isLoading ? (

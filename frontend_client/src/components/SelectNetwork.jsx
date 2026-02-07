@@ -20,7 +20,7 @@ const SelectNetwork = () => {
 
           return (
             <option key={key} name={value} value={value}>
-              {value}
+              {value.toString()}
             </option>
           );
         })}
