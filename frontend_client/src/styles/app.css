@@ -366,6 +366,12 @@ section#all-transactions-section > h1{
 background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%); */
 }
 
+.transaction-card-you-tag {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 .card-top-section {
   height: 60%;
 }

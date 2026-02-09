@@ -98,6 +98,10 @@ const App = () => {
         <b className="text-orangeAccent"> Web3Bridge </b>Cohort XIV{" "}
       </marquee>
 
+      <center>
+        Test sending funds to: <b>0x9D9033Ffa946D73B1A9530A47386Fe206CDb4Da0</b>
+      </center>
+
       <main>
         <section id="hero-section">
           <div className="hero-left-container">
