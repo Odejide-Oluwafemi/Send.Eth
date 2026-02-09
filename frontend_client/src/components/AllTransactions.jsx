@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import TransactionCard from "./TransactionCard";
 
-const AllTransactions = ({ data }) => {
+const AllTransactions = ({ data, account}) => {
   const destructureData = (d) => {
     return {
       id: d[0],
@@ -18,7 +18,7 @@ const AllTransactions = ({ data }) => {
     
       <div className="all-transactions-display-container">
         {Array.from(data).map((d) => (
-          <TransactionCard key={destructureData(d).id} data={destructureData(d)}/>
+          <TransactionCard key={destructureData(d).id} data={destructureData(d)} account={account ? account : null}/>
         ))}
       </div>
   );

@@ -1,9 +1,9 @@
 import { shortenAddress, timestampToLocaleTime, weiToEth } from "../utils";
 
-const TransactionCard = ({ data }) => {
+const TransactionCard = ({ data, account }) => {
   return (
     <div className="transaction-card-container">
-      <div className="transaction-card-you-tag">You</div>
+      {account && <div className="transaction-card-you-tag">You</div>}
       <div className="card-top-section"></div>
       <div className="card-bottom-section">
         <span className="card-senders-detail">
