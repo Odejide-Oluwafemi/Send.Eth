@@ -15,6 +15,53 @@ body {
   transition: all 0.3s ease;
 }
 
+.hamburger-menu {
+  width: 32px;
+  height: 24px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px 8px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger-icon {
+  width: 100%;
+  height: 3px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.hamburger-content {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  transition: right 0.4s ease-in-out;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.hamburger-content.show {
+  right: 0;
+}
+
+.hamburger-content nav ul {
+  flex-direction: column;
+  gap: 20px;
+}
+
 header {
   position: sticky;
   top: 0;
@@ -25,8 +72,8 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  padding: 10px 3%;
-  height: 5vh;
+  padding: 5px 5%;
+  min-height: 60px;
 }
 
 #logo {
@@ -452,3 +499,72 @@ background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%,
   animation-iteration-count: infinite;
 }
 
+/* RESPONSIVENESS */
+@media screen and (max-width: 1024px) {
+  .hero-left-container > h1 {
+    font-size: 2.2rem;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header > nav, 
+  header > .primary-btn {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
+  #hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 50px;
+    gap: 60px;
+    min-height: auto;
+  }
+
+  .hero-left-container {
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero-left-container > h1 {
+    width: 100%;
+    font-size: 2rem;
+  }
+
+  #input-form-container {
+    width: 140%;
+    margin-top: 60px;
+    padding: 20px 15px;
+  }
+
+  .all-transactions-display-container {
+    padding: 10px;
+  }
+
+  .transaction-card-container {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main > section {
+    padding: 10% 5%;
+  }
+
+  .hero-left-container > h1 {
+    font-size: 1.8rem;
+  }
+
+  span#logo-send {
+    font-size: 1.3rem;
+  }
+
+  #submit-transaction-btn {
+    width: 100%;
+  }
+}

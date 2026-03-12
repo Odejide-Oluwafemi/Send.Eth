@@ -12,15 +12,13 @@ const SelectNetwork = () => {
       <select
         name="network-select"
         onChange={(option) =>
-          setSelectedNetwork(BigInt(NETWORKS[option.currentTarget.value]))
+          setSelectedNetwork(BigInt(option.currentTarget.value))
         }
       >
-        {Object.entries(NETWORKS).forEach(([key, value]) => {
-          console.log(`Key: ${key}\tName: ${value}`);
-
+        {Object.entries(NETWORKS).map(([key, value]) => {
           return (
-            <option key={key} name={value} value={value}>
-              {value.toString()}
+            <option key={key} value={key}>
+              {value}
             </option>
           );
         })}

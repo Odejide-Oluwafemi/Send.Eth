@@ -17,6 +17,7 @@ const App = () => {
   } = useContext(BlockchainContext);
 
   const [showInputForm, setShowInputForm] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [transactionInProgress, setTransactionInProgress] = useState(false);
   const [transactionDetail, setTransactionDetail] = useState({
     "receipient-address": "",
@@ -85,13 +86,30 @@ const App = () => {
     <>
       <header>
         <Logo />
+        
+        <span className="hamburger-menu" onClick={() => setShowMobileMenu(!showMobileMenu)}>
+          <div className="hamburger-icon top"></div>
+          <div className="hamburger-icon middle"></div>
+          <div className="hamburger-icon bottom"></div>
+        </span>
+
         <NavBar />
+
         <ConnectWallet
           connectWallet={connectWallet}
           disconnectWallet={disconnectWallet}
           account={account}
         />
       </header>
+
+      <div className={`hamburger-content ${showMobileMenu ? "show" : ""}`} onClick={() => setShowMobileMenu(false)}>
+          <NavBar />
+          <ConnectWallet
+          connectWallet={connectWallet}
+          disconnectWallet={disconnectWallet}
+          account={account}
+        />
+      </div>
 
       <marquee>
         &copy; 2026, Odejide Oluwafemi (Group 1) @

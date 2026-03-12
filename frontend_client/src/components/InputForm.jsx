@@ -13,7 +13,7 @@ const InputForm = ({
       <img src="vite.svg" />
 
       <div>
-        <SelectNetwork />
+        {/* <SelectNetwork /> */}
         <h2>Make a Transaction</h2>
 
         {transactionInProgress ? (
