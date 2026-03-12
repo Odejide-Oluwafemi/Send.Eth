@@ -55,7 +55,7 @@ const App = () => {
       message: data.get("message").toString(),
     };
     setTransactionDetail(decodedData);
-    console.log(transactionDetail);
+    // console.log(transactionDetail);
     if (!validTransaction(transactionDetail))
       return alert("Fill in the transaction details appropriately");
 
