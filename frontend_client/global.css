@@ -135,11 +135,11 @@
 
 @keyframes zoomInOut {
   from {
-    transform: scale(0.9);
+    transform: scale(0.8);
   }
 
   to {
-    transform: scale(1.15);
+    transform: scale(0.98);
   }
 }
 

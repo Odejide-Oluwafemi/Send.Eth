@@ -17,7 +17,6 @@ const App = () => {
   } = useContext(BlockchainContext);
 
   const [showInputForm, setShowInputForm] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [transactionInProgress, setTransactionInProgress] = useState(false);
   const [transactionDetail, setTransactionDetail] = useState({
     "receipient-address": "",
@@ -82,15 +81,31 @@ const App = () => {
     } else setShowInputForm(true);
   };
 
+  const [showHamburger, setShowHamburger] = useState(false);
+
+  const toggleShowHamburger = () => {
+    setShowHamburger(prev => !prev);
+  }
+
   return (
     <>
       <header>
         <Logo />
         
-        <span className="hamburger-menu" onClick={() => setShowMobileMenu(!showMobileMenu)}>
+        <span className="hamburger-menu" onClick={toggleShowHamburger}>
           <div className="hamburger-icon top"></div>
           <div className="hamburger-icon middle"></div>
           <div className="hamburger-icon bottom"></div>
+
+          <div className={`hamburger-content ${showHamburger ? "show" : ""}`}>
+            <NavBar />
+            
+            <ConnectWallet
+            connectWallet={connectWallet}
+            disconnectWallet={disconnectWallet}
+            account={account}
+            />
+          </div>
         </span>
 
         <NavBar />
@@ -101,15 +116,6 @@ const App = () => {
           account={account}
         />
       </header>
-
-      <div className={`hamburger-content ${showMobileMenu ? "show" : ""}`} onClick={() => setShowMobileMenu(false)}>
-          <NavBar />
-          <ConnectWallet
-          connectWallet={connectWallet}
-          disconnectWallet={disconnectWallet}
-          account={account}
-        />
-      </div>
 
       <marquee>
         &copy; 2026, Odejide Oluwafemi (Group 1) @
