@@ -41,7 +41,6 @@ export const BlockchainContextProvider = ({ children }) => {
           const signerContract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
           setContract(signerContract);
         } catch (e) {
-          // ignore: signer may not be available yet
         }
       }
     } catch (error) {

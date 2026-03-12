@@ -1,9 +1,14 @@
+import { useContext } from "react";
+import { BlockchainContext } from "../context/BlockchainContext";
 import { shortenAddress, timestampToLocaleTime, weiToEth } from "../utils";
 
-const TransactionCard = ({ data, account }) => {
+
+const TransactionCard = ({ data }) => {
+  const { account } = useContext(BlockchainContext);
+
   return (
     <div className="transaction-card-container">
-      {account && <div className="transaction-card-you-tag">You</div>}
+      {(data.sender.toLowerCase() == account.toLowerCase()) && <div className="transaction-card-you-tag">You</div>}
       <div className="card-top-section"></div>
       <div className="card-bottom-section">
         <span className="card-senders-detail">
